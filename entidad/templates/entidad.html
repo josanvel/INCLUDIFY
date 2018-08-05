@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="redInn">
+<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="INCLUDIFY APP">
+		<meta name="author" content="INCLUDIFY">
+
+		<link rel="shortcut icon" href="/static/img/favicon.ico">
+
+		<title>INCLUDIFY</title>
+
+		{% include 'base/contenedor_css.tpl.html'%}
+
+		<script src='https://www.google.com/recaptcha/api.js'></script>
+		
+</head>
+
+<body>
+<style type="text/css">
+.celda {
+		display: table;
+}
+
+.celda [class*="col-"] {
+		float: none;
+		display: table-cell;
+		vertical-align: top;
+		margin:2px;
+}
+
+.visto {
+	color: #FFFFFF;
+	background-color: #00A2E7;
+	border-color: #FFFFFF;
+}
+</style>
+ <!-- Barra de navegación
+		============= -->
+		<div class="navbar navbar-inverse navbar-fixed-top" style="background: #314A5E;">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand visible-xs" href="/entidad" style="margin-right: 30px;"><i class="fa fa-home"></i> INCLUDIFY</a>
+
+				</div>
+				<div class="collapse navbar-collapse">
+
+						<ul class="nav navbar-nav"> 
+							<li class=" hidden-xs {% if request.path == '/entidad' %} active {% endif %}">
+								<a class="navbar-brand " href="/entidad" style="margin-right: 30px;"><img src="../static/img/logo.png" alt="..." class="img-rounded" width="170" height="50"></a>
+							</li>
+								<li class="visible-xs {% if 'registrar' in request.path %} active {% endif %}">
+								<a href="#">Registrarse</a></li>
+								<li class="visible-xs {% if 'iniciarSesion' in request.path %} active {% endif %}">
+								<a href="{% url 'entidad:ingreso' %}">Iniciar sesión</a></li>   
+						</ul>
+					<!-- Search form for extra small screens -->
+					<ul class="nav navbar-nav navbar-right hidden-xs">            
+						<!-- Sign in & Sign up -->           
+							<li class="show"><a href="#">QUIENES SOMOS</a></li>
+							<li class="show"><a href="#">TESTIMONIOS</a></li>
+							<li class="show"><a href="#">PLANES</a></li>
+							<li class="show"><a href="#">REGISTRATE</a></li>
+							<li class="show"><a href="{% url 'entidad:ingreso' %}">INICIAR SESIÓN</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+<!-- Contenido de la Pagina-->
+<div class="wrapper">
+		{% block contenido %}
+			<div id="" style="background: #314A5E">
+					<div class="container">
+							<div class="row">
+									<div class="col-md-12" align="center" style="padding: 30px 200px; height: 350px !important; color: #FFFFFF">
+											<div class="">
+												<h1>MISIONES, RETOS, REALIDAD VIRTUAL INCLUDIFY LO TIENE TODO</h1>
+												<div style="padding: 5px 140px;">
+													<h5>La plataforma de aprendizaje inclusivo que ayuda al docente certificarse en educacion inclusiva a traves de gamificacion.</h5>
+												</div>
+												<div class="" align="center" style="height: 80px !important; padding: 30px 30px">
+													<button type="button" class="btn btn-primary" style="background: #16C3B9">COMENCEMOS</button>
+												</div>
+											</div>
+									</div>
+							</div>
+					</div>
+			</div>
+			<div id="" style="background: #FFFFFF">
+					<div class="container">
+							<div class="row">
+									<div class="col-md-12" align="center" style="padding: 30px 200px; height: 350px !important; color: #000000
+									">
+										<div class="row">
+											<div class="col-md-4" align="center">
+												<img src="../static/img/intelectual.png" alt="..." class="img-rounded" width="60" height="40">
+												<h5>INTELIFY</h5>
+												<p style="font-size:12px; color:#03225C;">Entender las emociones de las personas que lidian con discapacidad intelectual es el desafio mas grande, nosotros lo haremos más facil.</p>
+											</div>
+											<div class="col-md-4"  align="center">
+												<img src="../static/img/fisica.png" alt="..." class="img-rounded" width="60" height="40">
+												<h5>MOVIFY</h5>
+												<p style="font-size:12px; color:#03225C;">Sentarte en una silla junto a nuestra app y los retos impuestos, te dará una experiencia lúdica y enriquecedora.</p>
+											</div>
+											<div class="col-md-4"  align="center">
+												<img src="../static/img/visual.png" alt="..." class="img-rounded" width="60" height="40">
+												<h5>VISUALIFY</h5>
+												<p style="font-size:12px; color:#03225C;">La ceguera a cualquier edades una realidad soloentendible sisevive en primera persona, por eso a traves de retos se transmitirá esta vivencia.</p>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-2"></div>
+											<div class="col-md-4"  align="center">
+												<img src="../static/img/psicosocial.png" alt="..." class="img-rounded" width="60" height="40">
+												<h5>PSISOFY</h5>
+												<p style="font-size:12px; color:#03225C;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit adipiscing blandit. Aliquam placerat.</p>
+											</div>
+											<div class="col-md-4"  align="center">
+												<img src="../static/img/auditiva.png" alt="..." class="img-rounded" width="60" height="40">
+												<h5>AUDITIFY</h5>
+												<p style="font-size:12px; color:#03225C;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit adipiscing blandit. Aliquam placerat.</p>
+											</div>
+											<div class="col-md-2"></div>
+										</div>
+											
+									</div>
+							</div>
+					</div>
+			</div>
+
+		{% endblock %}
+
+</div>
+
+<!-- Pie de Pagina-->
+		{% include 'base/pie_pagina.tpl.html'%}
+
+</body>
+		{% include 'base/contenedor_js.tpl.html'%}
+		{% block customjs %}
+		{% endblock %}
+
+</html>

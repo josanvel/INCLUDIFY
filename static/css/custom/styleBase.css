@@ -1,0 +1,38 @@
+.no_resizable{
+	resize: none;
+}
+
+.privacidadSelect{
+	width: 100px;
+}
+
+.disabledPagination{
+	cursor:not-allowed !important;
+	background-color: #d6d6d6 !important;
+}
+
+/*------CLASES PARA LOS ERRORES DE LOS FORMULARIOS--------*/
+label.error { 
+	color: rgba(255, 0, 0, 0.85);
+	font-weight: normal;
+	font-size: 12px
+}
+
+.has-error .form-control {
+    border-color: rgba(255, 0, 0, 0.61);
+}
+
+.has-error .form-control:focus {
+    border-color: rgba(255, 0, 0, 0.61);
+}
+
+/*------------ERRORES DEL SERVIDOR-----------------------*/
+.erroresFields{
+	color: rgba(255, 0, 0, 0.85);
+	font-weight: normal;
+	font-size: 12px
+}
+
+.ui-widget{
+	z-index: 1348 !important;
+}

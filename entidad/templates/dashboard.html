@@ -1,0 +1,430 @@
+{% extends "ingreso.tpl.html" %}
+<style type="text/css">
+	.sidebar-nav .navbar .navbar-collapse {
+		padding: 0;
+		max-height: none;
+	}
+	.sidebar-nav .navbar ul {
+		float: none;
+		display: block;
+		}
+	.sidebar-nav .navbar li {
+		float: none;
+		display: block;
+	}
+	.sidebar-nav .navbar li a {
+		padding-top: 12px;
+		padding-bottom: 12px;
+	}
+</style>
+
+{% block menuUsuario %}
+ 
+{% endblock %}
+
+{% block dropdownPerfil %}
+{% endblock dropdownPerfil %}
+
+{% block scriptsCustoms %}
+<link href="../static/css/normalize.less" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/radar.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<style>
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}				
+</style>
+
+
+		<script type="text/javascript">
+			google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(drawChart);
+			google.charts.load('current', {'packages':['table']});
+			google.charts.setOnLoadCallback(drawTable);
+
+			var chart = AmCharts.makeChart( "chartdiv", {
+			  "type": "radar",
+			  "theme": "light",
+			  "dataProvider": [ {
+			    "indicadores": "Aprendizaje efectiva",
+			    "indice": 80
+			  }, {
+			    "indicadores": "Bienestar escolar",
+			    "indice": 50
+			  }, {
+			    "indicadores": "Equidad estudiantil",
+			    "indice": 90
+			  },  {
+			    "indicadores": "Eficiencia",
+			    "indice": 60
+			  } ],
+			  "valueAxes": [ {
+			    "axisTitleOffset": 20,
+			    "minimum": 0,
+			    "axisAlpha": 0.15
+			  } ],
+			  "startDuration": 2,
+			  "graphs": [ {
+			    "balloonText": "[[value]] indice",
+			    "bullet": "round",
+			    "lineThickness": 2,
+			    "valueField": "indice"
+			  } ],
+			  "categoryField": "indicadores",
+			  "export": {
+			    "enabled": true
+			  }
+			} );
+
+			var myRadarChart = new Chart(ctx, {
+			    type: 'radar',
+			    data: data,
+			    options: options
+			});
+
+			function drawChart() {
+
+				var data = google.visualization.arrayToDataTable([
+					['Task', 'Hours per Day'],
+					['Work',     11],
+					['Eat',      2],
+					['Commute',  2],
+					['Watch TV', 2],
+					['Sleep',    7]
+				]);
+
+				var options = {
+					title: 'My Daily Activities'
+				};
+
+				var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+				chart.draw(data, options);
+			}
+			function drawTable() {
+				var data = new google.visualization.DataTable();
+				data.addColumn('string', 'Nombre');
+				data.addColumn('string', 'Apellido');
+				data.addColumn('number', 'Puntaje');
+				data.addRows([
+					['Mike',  'Valencia Cortez', 9100],
+					['Jim',   'Caicedo Rodriguez',  800],
+					['Maria', 'Gracia Jijon', 750],
+					['Marcos', 'Zambrano Ortiz',  720],
+					['Luis', 'Gomez Ortiz',  720]
+				]);
+
+				var table = new google.visualization.Table(document.getElementById('table_div'));
+
+				table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+			}
+		</script>
+{% endblock scriptsCustoms%}
+
+{% block contenedor %}
+<div class="container">
+
+	<div class="row tile_count">
+		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+			<span class="count_top"><i class="fa fa-user"></i> Total Docentes</span>
+			<div class="count">34</div>
+			<span class="count_bottom"><i class="green">4% </i> de la ultima semana</span>
+		</div>
+		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+			<span class="count_top"><i class="fa fa-clock-o"></i> Tiempo Promedio</span>
+			<div class="count">123.50</div>
+			<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> de la ultima semana</span>
+		</div>
+		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+			<span class="count_top"><i class="fa fa-user"></i> Total Hombres</span>
+			<div class="count green">12</div>
+			<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> de la ultima semana</span>
+		</div>
+		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+			<span class="count_top"><i class="fa fa-user"></i> Total Mujeres</span>
+			<div class="count">22</div>
+			<span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> de la ultima semana</span>
+		</div>
+		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+			<span class="count_top"><i class="fa fa-user"></i> Total coleccion</span>
+			<div class="count">34</div>
+			<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> de la ultima semana</span>
+		</div>
+		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+			<span class="count_top"><i class="fa fa-user"></i> Total Coneccion</span>
+			<div class="count">50</div>
+			<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> de la ultima semana</span>
+		</div>
+	</div>
+
+
+	<div class="col-md-4">
+		<div class="x_panel tile fixed_height_280">
+			<div class="x_title">
+				<h2>Indicadores</h2>
+				<div id="chartdiv"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="x_panel tile fixed_height_280">
+			<div class="x_title">
+				<h2>Ranking Docentes</h2>
+				<div id="table_div"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="x_panel tile fixed_height_320">
+        <div class="x_title">
+          <h2>Discapacidades Gye</h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Settings 1</a>
+                </li>
+                <li><a href="#">Settings 2</a>
+                </li>
+              </ul>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <div class="widget_summary">
+            <div class="w_left w_25">
+              <span>Física</span>
+            </div>
+            <div class="w_center w_55">
+              <div class="progress">
+                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 27.77%;">
+                  <span class="sr-only">60% Complete</span>
+                </div>
+              </div>
+            </div>
+            <div class="w_right w_20">
+              <span>2621</span>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+
+          <div class="widget_summary">
+            <div class="w_left w_25">
+              <span>Intelectual</span>
+            </div>
+            <div class="w_center w_55">
+              <div class="progress">
+                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 51.53%;">
+                  <span class="sr-only">60% Complete</span>
+                </div>
+              </div>
+            </div>
+            <div class="w_right w_20">
+              <span>4853</span>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="widget_summary">
+            <div class="w_left w_25">
+              <span>Auditiva</span>
+            </div>
+            <div class="w_center w_55">
+              <div class="progress">
+                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 8.38%;">
+                  <span class="sr-only">60% Complete</span>
+                </div>
+              </div>
+            </div>
+            <div class="w_right w_20">
+              <span>791</span>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="widget_summary">
+            <div class="w_left w_25">
+              <span>Visual</span>
+            </div>
+            <div class="w_center w_55">
+              <div class="progress">
+                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2.97%;">
+                  <span class="sr-only">60% Complete</span>
+                </div>
+              </div>
+            </div>
+            <div class="w_right w_20">
+              <span>280</span>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="widget_summary">
+            <div class="w_left w_25">
+              <span>Psicosocial</span>
+            </div>
+            <div class="w_center w_55">
+              <div class="progress">
+                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 9.45%;">
+                  <span class="sr-only">60% Complete</span>
+                </div>
+              </div>
+            </div>
+            <div class="w_right w_20">
+              <span>892</span>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="x_panel tile fixed_height_320 overflow_hidden">
+        <div class="x_title">
+          <h2>Device Usage</h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Settings 1</a>
+                </li>
+                <li><a href="#">Settings 2</a>
+                </li>
+              </ul>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <table class="" style="width:100%">
+            <tbody><tr>
+              <th style="width:37%;">
+                <p>Top 5</p>
+              </th>
+              <th>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                  <p class="">Device</p>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                  <p class="">Progress</p>
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <td><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0px; width: 140px; height: 140px;"></canvas>
+              </td>
+              <td>
+                <table class="tile_info">
+                  <tbody><tr>
+                    <td>
+                      <p><i class="fa fa-square blue"></i>IOS </p>
+                    </td>
+                    <td>30%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><i class="fa fa-square green"></i>Android </p>
+                    </td>
+                    <td>10%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><i class="fa fa-square purple"></i>Blackberry </p>
+                    </td>
+                    <td>20%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><i class="fa fa-square aero"></i>Symbian </p>
+                    </td>
+                    <td>15%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><i class="fa fa-square red"></i>Others </p>
+                    </td>
+                    <td>30%</td>
+                  </tr>
+                </tbody></table>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="x_panel tile fixed_height_320">
+        <div class="x_title">
+          <h2>Quick Settings</h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Settings 1</a>
+                </li>
+                <li><a href="#">Settings 2</a>
+                </li>
+              </ul>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <div class="dashboard-widget-content">
+            <ul class="quick-list">
+              <li><i class="fa fa-calendar-o"></i><a href="#">Settings</a>
+              </li>
+              <li><i class="fa fa-bars"></i><a href="#">Subscription</a>
+              </li>
+              <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
+              <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
+              </li>
+              <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
+              <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
+              </li>
+              <li><i class="fa fa-area-chart"></i><a href="#">Logout</a>
+              </li>
+            </ul>
+
+            <div class="sidebar-widget">
+                <h4>Profile Completion</h4>
+                <canvas width="150" height="80" id="chart_gauge_01" class="" style="width: 160px; height: 100px;"></canvas>
+                <div class="goal-wrapper">
+                  <span id="gauge-text" class="gauge-value pull-left">3,200</span>
+                  <span class="gauge-value pull-left">%</span>
+                  <span id="goal-text" class="goal-value pull-right">100%</span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock contenedor %}
+
+

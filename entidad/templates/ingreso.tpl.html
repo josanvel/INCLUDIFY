@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="redInn">
+<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="INCLUDIFY APP">
+		<meta name="author" content="INCLUDIFY">
+		<link rel="shortcut icon" href="/static/img/favicon.ico">
+
+		<title>INCLUDIFY</title>
+		{% include 'base/contenedor_css.tpl.html'%}
+		<script src='https://www.google.com/recaptcha/api.js'></script>
+    <link href="../static/css/custom.min.css" type="text/css" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+	<style type="text/css">
+		.celda {
+				display: table;
+		}
+		.celda [class*="col-"] {
+				float: none;
+				display: table-cell;
+				vertical-align: top;
+				text-align: left;
+				margin:2px;
+		}
+		.visto {
+			color: #FFFFFF;
+			background-color: #00A2E7;
+			border-color: #FFFFFF;
+		}
+		#inferior{
+			color: #FFF;
+			background: #314A5E;
+			position:absolute; /*El div será ubicado con relación a la pantalla*/
+			left:0px; /*A la derecha deje un espacio de 0px*/
+			right:0px; /*A la izquierda deje un espacio de 0px*/
+			bottom:0px; /*Abajo deje un espacio de 0px*/
+			height:60px; /*alto del div*/
+			z-index:0;
+			 }
+
+			 .nav_menu {
+    float: left;
+    background: #EDEDED;
+    border-bottom: 1px solid #D9DEE4;
+    margin-bottom: 10px;
+    width: 100%;
+    position: relative;
+}
+	</style>
+ 
+	<div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="../static/img/user.png" alt="">John Doe
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;"> Profile</a></li>
+                    <li>
+                      <a href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>Settings</span>
+                      </a>
+                    </li>
+                    <li><a href="javascript:;">Help</a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">6</span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <li>
+                      <a>
+                        <span class="image"><img src="../static/img/user.png" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="../static/img/user.png" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="../static/img/user.png" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="../static/img/user.png" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+		<div class="navbar navbar-inverse navbar-fixed-left" style="background: #314A5E;">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand visible-xs" href="/entidad" style="margin-right: 30px;"><i class="fa fa-home"></i> INCLUDIFY</a>
+				</div>
+				<div class="navbar nav_title" style="border: 0;">
+          <a href="/entidad" class="site_title"><img src="../static/img/logo.png" alt="..." class="img-rounded" width="140" height="30"></a>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="profile clearfix">
+	        <div class="profile_pic">
+	          <img src="../static/img/user.png" alt="..." class="img-circle profile_img">
+	        </div>
+	        <div class="profile_info">
+	          <span>Welcome,</span>
+	          <h2>John Doe</h2>
+	        </div>
+	      </div>
+
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section active">
+            <h3>General</h3>
+            <ul class="nav side-menu" style="">
+              <li class="active"><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu" style="display: block;">
+                  <li class="current-page"><a href="/entidad/dashboard">Dashboard</a></li>
+                  <li><a href="/entidad/game">Game</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-desktop"></i> Foro <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu" style="">
+                  <li><a href="form.html">General</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-cog"></i>Soporte<span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu" style="">
+                  <li><a href="general_elements.html">Soporte General</a></li>
+                </ul>
+              </li>
+              {% block menuUsuario %}
+							{% endblock menuUsuario %}
+            </ul>
+          </div>
+        </div>
+
+
+
+
+				
+			</div>
+		</div>
+
+		<!-- Contenido de la Pagina-->
+		<div class="wrapper" style="background: #FFFFFF">
+				{% block contenedor %}
+				{% endblock %}
+				<!--
+				<div id="inferior">
+					<div style="float: right!important;">
+						<div class="container" style="display: block; background: #FFFFFF; width: 60px; height: 60px; border-radius: 50%">
+						  <a title="ChatBot" href="#"><img height="34" width="34" class="img-rounded" src="../static/img/chat.png" alt="ChatBot" /></a>
+						</div>
+					</div>
+				</div>
+			-->
+		</div>
+
+
+		<!-- Pie de Pagina-->
+</body>
+<link href="../static/css/navbar-fixed-left.min.css" type="text/css" rel="stylesheet"/>
+{% include 'base/contenedor_js.tpl.html'%}
+
+{%block scriptsCustoms %}
+{%endblock%}
+</html>
